@@ -3,45 +3,90 @@ import java.util.*;
 public class MainPMB {
 	
 	static calon maba = new calon();
+	static MainPMB menu = new MainPMB();
 	static Scanner input = new Scanner(System.in);
+	static pilih pilih = new pilih();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Daftar();
-		Akademik();
-		System.exit(0);
+		menuTampilan();
+	}
+	
+	public static void menuTampilan() {
+		System.out.println("================================================");
+		System.out.println("Selamat Datang di Menu Penerimaan Mahasiswa Baru");
+		System.out.println("================================================");
+		System.out.println("1. Input Data Pribadi");
+		System.out.println("2. Input Data Akademik");
+		System.out.println("3. Lihat Data");
+		System.out.println("4. Kirim Data");
+		System.out.println();
+		System.out.println("0. Keluar dari program");
+		System.out.println("================================================");
+		// sistem menu
+		if (input.hasNextInt()) {
+			pilih.setPilih(input.nextInt());
+			menu(pilih.getPilih());
+		} else {
+			System.out.println("Tolong Masukkan Angka!");
+		}
+	}
+	
+	public static void menu(int n) {
+		if (n == 1) {
+			Daftar();
+		} else if (n == 2) {
+			Akademik();
+		} else if (n == 3) {
+			maba.getData();
+			System.out.println("Ketik apa saja untuk kembali");
+			input.nextLine();
+			input.nextLine();
+			menuTampilan();
+		} else if (n == 4) {
+			maba.setCalon();
+		} else if (n == 0) {
+			System.out.println("Sampai jumpa");
+			System.exit(0);
+		} else {
+			System.out.println("Tolong pilih antara 1 - 4");
+			input.nextLine();
+			input.nextLine();
+			menuTampilan();
+		}
 	}
 
 	public static void Daftar() {
 		String nama, nisn, asal_sekolah, alamat;
-		nama = "Hafiz Juansyah Putra";
-		nisn = "2007411020";
-		asal_sekolah = "SMK Islam PB.Soedirman 1 Jakarta Timur";
-		alamat = "Kp. Areman Jl. Alamanda RT 08/07 No.95 Cimanggis, Depok";
-		
-		System.out.println("Selamat Datang di Form Penerimaan Mahasiswa Baru");
-		System.out.println("================================================");
+		// buat percobaan make static diapus
+		//nama = "Hafiz Juansyah Putra";
+		//nisn = "2007411020";
+		//asal_sekolah = "SMK Islam PB.Soedirman 1 Jakarta Timur";
+		//alamat = "Kp. Areman Jl. Alamanda RT 08/07 No.95 Cimanggis, Depok";
 		
 		// Input data
+		System.out.println("================================================");
+		input.nextLine();
 		System.out.print("Nama         : ");
-		//nama = input.nextLine();
-		System.out.println();
-		System.out.print("NISN         : ");
-		//nisn = input.nextLine();
-		System.out.println();
-		System.out.print("Asal Sekolah : ");
-		//asal_sekolah = input.nextLine();
-		System.out.println();
-		System.out.print("Alamat Rumah : ");
-		//alamat = input.nextLine();
-		System.out.println();
+		nama = input.nextLine();
 		
-		// set data utama
+		System.out.print("NISN         : ");
+		nisn = input.nextLine();
+		
+		System.out.print("Asal Sekolah : ");
+		asal_sekolah = input.nextLine();
+		
+		System.out.print("Alamat Rumah : ");
+		alamat = input.nextLine();
+		
+		System.out.println();
+		// set data pribadi
 		maba.setNama(nama);
 		maba.setNISN(nisn);
 		maba.setAsalSekolah(asal_sekolah);
 		maba.setAlamat(alamat);
-				
+		
+		menuTampilan();
 	}	
 	
 	public static void Akademik() {
@@ -62,8 +107,7 @@ public class MainPMB {
 		if (input.hasNextInt()) {
 			// set data prodi
 			setProdi(maba.jurusan.getNum() ,input.nextInt());
-			// ngambil data pendaftar
-			maba.getData();
+			menuTampilan();
 		} else {
 			Scanner s = new Scanner(System.in);
 			System.out.println("Tolong Masukkan Sebuah Angka");
@@ -118,8 +162,7 @@ public class MainPMB {
 			Scanner s = new Scanner(System.in);
 			System.out.println("Mohon pilih dari data jurusan yang tersedia!");
 			s.nextLine();
-			s.close();	
-			maba.jurusan.getData();
+			s.close();
 		}
 	}
 	//akhir class MainPMB
