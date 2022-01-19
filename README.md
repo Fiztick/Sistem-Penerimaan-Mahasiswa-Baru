@@ -4,5 +4,4 @@ Sistem ini hanya meliputi metode yang simple seperti
 - Input data akademik <br/>
 - Melihat data calon <br/>
 - Memasukkan data input calon ke sebuah array<br/>
-<br/>
-Projek ini dikerjakan untuk memenuhi Tugas Projek Akhir Pemrograman Berorientasi Objek
+Projek ini dikerjakan untuk memenuhi Tugas Projek Akhir Mata Kuliah Pemrograman Berorientasi Objek
